@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ErathQakeApp</string>
+    <string name="bottom_nav_bar_home_item_text">Home</string>
+    <string name="bottom_nav_bar_map_item_text">Map</string>
+</resources>
