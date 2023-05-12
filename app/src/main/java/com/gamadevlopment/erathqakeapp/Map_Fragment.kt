@@ -17,10 +17,13 @@ class Map_Fragment : Fragment(R.layout.map_fragment) {
 
         mapView = view.findViewById(R.id.MapView)
 
+
+        //load map
         try {
             mapView.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE)
             Configuration.getInstance().userAgentValue = "EarthQakeApp"
-            mapView.controller.setZoom(5)
+            mapView.controller.setZoom(4.0)
+            mapView.minZoomLevel = 4.0
 
         } catch (e: Exception) {
             Log.d("Map_Fragment", "map loading process : " + e.message)
