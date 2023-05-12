@@ -23,23 +23,17 @@ import java.io.IOException
 class Home_fragment(val mContext: Context) : Fragment(R.layout.home_fragment) {
 
     var mEarthQakesData = ArrayList<EarthQuake>()
-   lateinit var loadingProgressBar :ProgressBar
-  lateinit  var recyclerView :RecyclerView
+    lateinit var loadingProgressBar: ProgressBar
+    lateinit var recyclerView: RecyclerView
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-         loadingProgressBar = view.findViewById(R.id.fragment_home_loading_bar) as ProgressBar
-         recyclerView = view.findViewById(R.id.home_fragment_recyclerView) as RecyclerView
+        loadingProgressBar = view.findViewById(R.id.fragment_home_loading_bar) as ProgressBar
+        recyclerView = view.findViewById(R.id.home_fragment_recyclerView) as RecyclerView
 
-
-
+        //get Data from Api inside Coroutine
         GlobalScope.launch(Dispatchers.IO) {
             //get Data from internet in separate Thread
             getDataFromAPI("https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-01-02")
