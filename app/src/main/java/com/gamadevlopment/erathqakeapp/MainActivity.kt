@@ -3,30 +3,18 @@ package com.gamadevlopment.erathqakeapp
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity() {
-
-    lateinit var bottomNavBar: BottomNavigationView
+class MainActivity : AppCompatActivity(), recyclerAdapter.onCardClickListner {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val homeFragment = Home_fragment(this)
-        val mapFragment = Map_Fragment()
+        val homeFragment = Home_fragment(applicationContext, this)
 
         //on App start run Home Fragment
         runFragment(homeFragment)
-        //Bottom Nav Bar
-        bottomNavBar = findViewById(R.id.bottom_Navigation_main)
-        bottomNavBar.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.bottom_nav_home -> runFragment(homeFragment)
-                R.id.bottom_nav_map -> runFragment(mapFragment)
-            }
-            true
-        }
+
 
     }
 
@@ -38,5 +26,12 @@ class MainActivity : AppCompatActivity() {
             addToBackStack(null)
             commit()
         }
+    }
+
+
+    //Handle Card Click inside Home Fragment
+    override fun onCardClicked(earthQake: EarthQuake) {
+        val mapFragment = Map_Fragment()
+        runFragment(mapFragment)
     }
 }

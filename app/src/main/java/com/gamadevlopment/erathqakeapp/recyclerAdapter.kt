@@ -5,17 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class recyclerAdapter(val context: Context, var mEarthQakeData: ArrayList<EarthQuake>) :
+public class recyclerAdapter(
+    val application: Context,
+    val listner: onCardClickListner,
+    var mEarthQakeData: ArrayList<EarthQuake>
+) :
     RecyclerView.Adapter<recyclerAdapter.mViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): mViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.earthqake_card, parent, false)
+        val view = LayoutInflater.from(application).inflate(R.layout.earthqake_card, parent, false)
         return mViewHolder(view)
     }
 
@@ -42,6 +47,15 @@ class recyclerAdapter(val context: Context, var mEarthQakeData: ArrayList<EarthQ
             holder.place_tv.text = place
             holder.magnitude_tv.text = magnitude.toString()
             holder.time_tv.text = "Date and Time: \n $formattedDate \n $formattedTime"
+            holder.depth_tv.text = "Depth: " + depth.toString()
+
+
+            //handle card Click here
+            holder.earthQuake_card.setOnClickListener {
+                listner.onCardClicked(earthQuake)
+            }
+
+
         }
     }
 
@@ -66,12 +80,20 @@ class recyclerAdapter(val context: Context, var mEarthQakeData: ArrayList<EarthQ
         lateinit var magnitude_tv: TextView
         lateinit var time_tv: TextView
         lateinit var depth_tv: TextView
+        lateinit var earthQuake_card: CardView
 
         init {
             place_tv = itemView.findViewById(R.id.earthQake_card_tv_place)
             magnitude_tv = itemView.findViewById(R.id.earthQake_card_tv_magnitude)
             time_tv = itemView.findViewById(R.id.earthQake_card_tv_time)
+            depth_tv = itemView.findViewById(R.id.earthQake_card_tv_depth)
+            earthQuake_card = itemView.findViewById(R.id.earthQuake_card_layout)
 
         }
+    }
+
+
+    interface onCardClickListner {
+        fun onCardClicked(earthQake: EarthQuake)
     }
 }

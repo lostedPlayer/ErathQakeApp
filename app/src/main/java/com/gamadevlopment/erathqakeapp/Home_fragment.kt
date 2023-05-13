@@ -20,7 +20,8 @@ import okhttp3.Response
 import org.json.JSONObject
 import java.io.IOException
 
-class Home_fragment(val mContext: Context) : Fragment(R.layout.home_fragment) {
+class Home_fragment(val mContext: Context, val listner: recyclerAdapter.onCardClickListner) :
+    Fragment(R.layout.home_fragment) {
 
     var mEarthQakesData = ArrayList<EarthQuake>()
     lateinit var loadingProgressBar: ProgressBar
@@ -32,6 +33,7 @@ class Home_fragment(val mContext: Context) : Fragment(R.layout.home_fragment) {
 
         loadingProgressBar = view.findViewById(R.id.fragment_home_loading_bar) as ProgressBar
         recyclerView = view.findViewById(R.id.home_fragment_recyclerView) as RecyclerView
+
 
         //get Data from Api inside Coroutine
         GlobalScope.launch(Dispatchers.IO) {
@@ -87,6 +89,7 @@ class Home_fragment(val mContext: Context) : Fragment(R.layout.home_fragment) {
                         mEarthQakesData.add(earthQake)
 
                         Log.d("Home_Fragment", "onResponse Place: " + place)
+                        Log.d("Home_Fragment", "onResponse Depth: " + depth)
                         Log.d("Home_Fragment", "onResponse Time: " + time.toString())
 
                     }
@@ -94,7 +97,8 @@ class Home_fragment(val mContext: Context) : Fragment(R.layout.home_fragment) {
 
                     GlobalScope.launch(Dispatchers.Main) {
                         recyclerView.layoutManager = LinearLayoutManager(mContext)
-                        val recyclerAdapter = recyclerAdapter(mContext, mEarthQakesData)
+                        val recyclerAdapter =
+                            recyclerAdapter(mContext, listner, mEarthQakesData)
                         recyclerView.adapter = recyclerAdapter
 
                         //setting up recyclerView
@@ -114,4 +118,6 @@ class Home_fragment(val mContext: Context) : Fragment(R.layout.home_fragment) {
         })
 
     }
+
+
 }

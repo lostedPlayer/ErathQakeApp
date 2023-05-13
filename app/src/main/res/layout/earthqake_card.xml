@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/earthQuake_card_layout"
     android:layout_margin="5dp"
     app:cardCornerRadius="10dp">
 
@@ -10,6 +11,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/recycler_card_bc"
         android:padding="16dp">
 
 
@@ -17,31 +19,62 @@
             android:id="@+id/earthQake_card_tv_place"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/earthQake_card_tv_magnitude"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="20dp"
             android:layout_alignParentTop="true"
-            android:text="TEST" />
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/magnitude_layout"
+            android:text="TEST"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/earthQake_card_tv_magnitude"
+
+        <LinearLayout
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/magnitude_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:textSize="24sp"
-            android:text="6.1" />
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/earthQake_card_tv_magnitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6.1"
+                android:textColor="@color/magnitude_red_color"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/earthQake_card_tv_magnitude_holder_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Magnitude"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/earthQake_card_tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/earthQake_card_tv_magnitude"
-            android:layout_marginLeft="20dp"
             android:layout_below="@id/earthQake_card_tv_place"
-            android:text="Time: 16.02.2023" />
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/magnitude_layout"
+            android:text="Time: 16.02.2023"
+            android:textColor="@color/white" />
 
+        <TextView
+            android:id="@+id/earthQake_card_tv_depth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/earthQake_card_tv_time"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/magnitude_layout"
+            android:text="Depth: 7.1 KM"
+            android:textColor="@color/white" />
 
 
     </RelativeLayout>

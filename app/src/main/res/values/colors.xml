@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+    <color name="recycler_card_bc">#282828</color>
+    <color name="magnitude_red_color">#EB3223</color>
 </resources>

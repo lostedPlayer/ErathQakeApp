@@ -1,5 +1,6 @@
 package com.gamadevlopment.erathqakeapp
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -37,6 +38,7 @@ class Map_Fragment : Fragment(R.layout.map_fragment) {
             Configuration.getInstance().userAgentValue = "EarthQakeApp"
             mapView.controller.setZoom(4.0)
             mapView.minZoomLevel = 4.0
+            mapView.setMultiTouchControls(true)
 
         } catch (e: Exception) {
             Log.d("Map_Fragment", "map loading process : " + e.message)
