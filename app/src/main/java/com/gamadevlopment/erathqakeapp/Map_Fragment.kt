@@ -1,6 +1,5 @@
 package com.gamadevlopment.erathqakeapp
 
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -22,7 +21,7 @@ import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Marker
 import java.io.IOException
 
-class Map_Fragment : Fragment(R.layout.map_fragment) {
+class Map_Fragment(val earthQuake: EarthQuake) : Fragment(R.layout.map_fragment) {
 
     lateinit var mapView: MapView
 
@@ -36,20 +35,49 @@ class Map_Fragment : Fragment(R.layout.map_fragment) {
         try {
             mapView.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE)
             Configuration.getInstance().userAgentValue = "EarthQakeApp"
-            mapView.controller.setZoom(4.0)
+            mapView.controller.setZoom(15.0)
             mapView.minZoomLevel = 4.0
             mapView.setMultiTouchControls(true)
+
+            val marker = Marker(mapView)
+            marker.position = GeoPoint(earthQuake.latitude, earthQuake.longitude)
+            marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+            mapView.overlays.add(marker)
+
+            //custom Map Pin
+            marker.icon =
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_location)
+            marker.title =
+                earthQuake.place + " \n Magnitude: ${earthQuake.mag.toString()} "
+            marker.snippet = "Click For more details"
+
+
+            //move map to pin location
+            mapView.controller.setCenter(marker.position)
+
+            // Disable map movement and zoom controls
+            // Disable all touch events on the map
+            mapView.setOnTouchListener { _, _ ->
+                true // consume the touch event
+            }
+
+
 
         } catch (e: Exception) {
             Log.d("Map_Fragment", "map loading process : " + e.message)
         }
 
+
+        //Only show location marker for used requested EarthQuake
         //get Data from Api inside Coroutine
+        /*
         GlobalScope.launch(Dispatchers.IO) {
             //get Data from internet in separate Thread
             getDataFromAPI("https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-01-02")
 
         }
+
+         */
 
 
     }

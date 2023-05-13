@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity(), recyclerAdapter.onCardClickListner {
 
     //Handle Card Click inside Home Fragment
     override fun onCardClicked(earthQake: EarthQuake) {
-        val mapFragment = Map_Fragment()
+        val mapFragment = Map_Fragment(earthQake)
         runFragment(mapFragment)
     }
 }
