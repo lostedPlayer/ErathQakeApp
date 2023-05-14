@@ -6,12 +6,11 @@
 
 
     <LinearLayout
-        android:id="@+id/mainActivity_date_range_select"
-        android:layout_width="wrap_content"
+        android:id="@+id/homeFragment_date_range_select"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_margin="10dp"
-        android:background="@drawable/botom_date_select_bc"
-        android:gravity="center_vertical"
+        android:background="@color/black"
+        android:gravity="center"
         android:orientation="horizontal"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,9 +54,18 @@
             android:padding="5dp"
             android:text="1.02.2023"
             android:textColor="@color/white" />
-
-
+        
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_fragment_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeFragment_date_range_select" />
 
 
     <ProgressBar
@@ -70,16 +78,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5" />
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/home_fragment_recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainActivity_date_range_select" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

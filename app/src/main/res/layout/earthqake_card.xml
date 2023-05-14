@@ -42,6 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="6.1"
+                android:maxLength="3"
                 android:textColor="@color/magnitude_red_color"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -66,15 +67,6 @@
             android:text="Time: 16.02.2023"
             android:textColor="@color/white" />
 
-        <TextView
-            android:id="@+id/earthQake_card_tv_depth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/earthQake_card_tv_time"
-            android:layout_marginLeft="20dp"
-            android:layout_toRightOf="@id/magnitude_layout"
-            android:text="Depth: 7.1 KM"
-            android:textColor="@color/white" />
 
 
     </RelativeLayout>

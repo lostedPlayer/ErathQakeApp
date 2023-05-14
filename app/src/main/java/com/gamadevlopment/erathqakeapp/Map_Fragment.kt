@@ -35,7 +35,7 @@ class Map_Fragment(val earthQuake: EarthQuake) : Fragment(R.layout.map_fragment)
         try {
             mapView.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE)
             Configuration.getInstance().userAgentValue = "EarthQakeApp"
-            mapView.controller.setZoom(15.0)
+            mapView.controller.setZoom(10.0)
             mapView.minZoomLevel = 4.0
             mapView.setMultiTouchControls(true)
 
@@ -46,10 +46,7 @@ class Map_Fragment(val earthQuake: EarthQuake) : Fragment(R.layout.map_fragment)
 
             //custom Map Pin
             marker.icon =
-                ContextCompat.getDrawable(requireContext(), R.drawable.ic_location)
-            marker.title =
-                earthQuake.place + " \n Magnitude: ${earthQuake.mag.toString()} "
-            marker.snippet = "Click For more details"
+                ContextCompat.getDrawable(requireContext(), R.drawable.earthquake_location_pin)
 
 
             //move map to pin location

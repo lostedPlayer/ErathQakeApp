@@ -5,7 +5,122 @@
 
     <org.osmdroid.views.MapView
         android:id="@+id/MapView"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_above="@id/map_fragment_earthQuakeDetails" />
+
+
+    <RelativeLayout
+        android:id="@+id/map_fragment_earthQuakeDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/recycler_card_bc">
+
+
+        <TextView
+            android:id="@+id/MapFragment_earthquake_deatails_holder_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/MapFragment_earthquake_deatails_holder_text"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/MapFragment_tv_place"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/MapFragment_earthquake_deatails_holder_text"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Albania , Trisete 20 km"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+        <LinearLayout
+            android:id="@+id/time_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/MapFragment_tv_place"
+            android:layout_marginLeft="20dp"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_time" />
+
+            <TextView
+                android:id="@+id/MapFragment_tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="Time: 16.02.2023"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/depth_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/time_layout"
+            android:layout_marginLeft="20dp">
+
+            <ImageView
+                android:src="@drawable/ic_depth"
+                android:layout_width="24dp"
+                android:layout_height="24dp"/>
+
+            <TextView
+                android:id="@+id/MapFragment_tv_depth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Depth: 7.1 KM"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/magnitude_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/MapFragment_tv_place"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/earthQake_card_tv_magnitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLength="3"
+                android:text="6.1"
+                android:textColor="@color/magnitude_red_color"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/earthQake_card_tv_magnitude_holder_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Magnitude"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
 
 </RelativeLayout>
